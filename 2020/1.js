@@ -3,7 +3,7 @@ const input = [1630, 1801, 1917, 1958, 1953, 1521, 1990, 1959, 1543, 1798, 638, 
 function productOf2(inputArray, sum) {
     for (let i = 0; i < inputArray.length; i++) {
         for (let j = i + 1; j < inputArray.length; j++) {
-            if (inputArray[i] + inputArray[j] + inputArray[k] === sum) {
+            if (inputArray[i] + inputArray[j] === sum) {
                 return inputArray[i] * inputArray[j]
             }
         }
@@ -22,5 +22,15 @@ function productOf3(inputArray, sum) {
     }
 }
 
-console.log(productOfSum2(input, 2020));
-console.log(productOfSum3(input, 2020));
+
+
+console.log(productOf2(input, 2020));
+console.log(productOf3(input, 2020));
+
+// Edited solution of 2023
+const { k_combinations } = require("../lib/lib");
+let a = k_combinations(input, 2).filter((v) => v[0]+v[1]===2020).flat()
+console.log(a)
+console.log(a.reduce((acc, v) => acc*v, 1))
+let b = k_combinations(input, 3).filter((v) => v[0]+v[1]+v[2]===2020).flat()
+console.log(b.reduce((acc,v) => acc*v, 1))
